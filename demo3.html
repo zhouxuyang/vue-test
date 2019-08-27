@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>
+                <label for="">姓：</label><input type="text" v-model="first_name">
+        </p>
+        <p>
+                <label for="">名：</label><input type="text" v-model="last_name">
+        </p>
+        <p >
+                <label for="">姓名(单向)：</label><input type="text" v-model="full_name1" >
+                <label for="">姓名(单向)：</label><input type="text" v-model="full_name2" >
+        </p>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                first_name:"A",
+                last_name:"B",
+                full_name2:"AB"
+
+            },
+            methods:{
+            },
+            computed:{
+                full_name1(){
+                    console.log('full_name1()');
+                    return this.first_name+this.last_name;
+                },
+
+            }
+
+        })
+        vm.$watch('first_name',function(newVal,oldVal){
+            this.full_name2=newVal+this.last_name
+        })
+    </script>
+</body>
+</html>

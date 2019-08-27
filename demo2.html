@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 双大括号表达式 -->
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{message.toUpperCase()}}</p>
+    </div>
+    <script>
+        const vm =new Vue({
+            el:'#app',
+            data:{
+                message:'zhou xu yang'
+            }
+        })
+    </script>
+
+    <!-- 强制数据绑定 -->
+    <div id="app2">
+        <img v-bind:src="img_url" alt="">
+    </div>
+    <script>
+    new Vue({
+        el:'#app2',
+        data:{
+            img_url:'./logo.png'
+        }
+    })
+    </script>
+
+    <!-- 绑定事件监听 -->
+    <div id="app3">
+        <button @click="test">点他</button>
+        <button @click="test2(123)">点他</button>
+    </div>
+    <script>
+    new Vue({
+        el:'#app3',
+        methods:{
+            test(){
+                alert("zhou ba !")
+            },
+            test2(aa){
+                alert(aa)
+            }
+        }
+    })
+    
+    </script>
+
+</body>
+</html>
