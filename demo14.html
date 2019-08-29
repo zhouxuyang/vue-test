@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+</head>
+<body>
+<h2>过滤器</h2>
+<div id="app">
+    <p>{{newdate}}</p>
+    <p>{{newdate|dataF}}</p>
+</div>
+<script>
+    Vue.filter('dataF',function(value){
+        return moment(value).format('YYYY-MM-DD HH:mm:ss');
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            newdate: new Date()
+        }
+    })
+</script>
+</body>
+</html>

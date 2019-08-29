@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .xxx-enter-active, .xxx-leave-active {
+            transition: opacity 1s;
+        }
+
+        .xxx-enter, .xxx-leave-to {
+            opacity: 0;
+        }
+
+        .move-enter-active {
+            transition: all 1s;
+        }
+
+        .move-leave-active {
+            transition: all 3s;
+        }
+        .move-enter{
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .move-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+<h2>过渡动画</h2>
+<div id="demo">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="xxx">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<div id="demo2">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="move">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<script>
+    new Vue({
+        el: '#demo',
+        data: {
+            show: true
+        }
+    })
+
+    new Vue({
+        el: "#demo2",
+        data: {
+            show: true
+        }
+    })
+</script>
+</body>
+</html>

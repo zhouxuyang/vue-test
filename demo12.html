@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<h2>Vue生命周期</h2>
+<div id="app">
+    <p v-show="isShow">文字内容</p>
+    <button @click="stop">stop</button>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            isShow: true
+        },
+        methods: {
+            stop() {
+                this.$destroy()
+            }
+        },
+        beforeCreate(){
+            console.log("beforeCreate")
+        },
+        created(){
+            console.log("created")
+        },
+        beforeMount(){
+            console.log("beforeMount")
+        },
+        mounted() {
+            console.log('mounted')
+            this.intervalId = setInterval(() => {
+                this.isShow = !this.isShow
+            }, 1000)
+        },
+        beforeUpdate(){
+            console.log("beforeUpdate")
+        },
+        updated(){
+            console.log("updated")
+        },
+        beforeDestroy() {
+            console.log("beforeDestroy")
+            clearInterval(this.intervalId)
+        },
+        destroyed(){
+            console.log("destroyed")
+        }
+    })
+</script>
+</body>
+</html>

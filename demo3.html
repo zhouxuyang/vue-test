@@ -15,33 +15,27 @@
         <p>
                 <label for="">名：</label><input type="text" v-model="last_name">
         </p>
-        <p >
+        <p>
                 <label for="">姓名(单向)：</label><input type="text" v-model="full_name1" >
-                <label for="">姓名(单向)：</label><input type="text" v-model="full_name2" >
         </p>
     </div>
     <script>
-        const vm = new Vue({
+        new Vue({
             el:'#app',
             data:{
                 first_name:"A",
                 last_name:"B",
-                full_name2:"AB"
-
-            },
-            methods:{
+                
             },
             computed:{
                 full_name1(){
                     console.log('full_name1()');
                     return this.first_name+this.last_name;
-                },
-
+                }
+            },
+            watch:{
+                
             }
-
-        })
-        vm.$watch('first_name',function(newVal,oldVal){
-            this.full_name2=newVal+this.last_name
         })
     </script>
 </body>
